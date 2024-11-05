@@ -23,13 +23,13 @@ class TestLogisticRegressor(unittest.TestCase):
         cls.X_train, cls.X_test, cls.y_train, cls.y_test = train_test_split(cls.X, cls.y, test_size=0.25, random_state=42)
 
     def test_initialization(self):
-        """Test if the model initializes with the correct parameters."""
+        # test if the model initializes with the correct parameters
         model = LogisticRegressor(learning_rate=0.05, iterations=1000)
         self.assertEqual(model.learning_rate, 0.05)
         self.assertEqual(model.iterations, 1000)
 
     def test_training(self):
-        """Test if the model can train without errors and updates weights correctly."""
+        # test if the model can train without errors and updates weights correctly
         model = LogisticRegressor(learning_rate=0.05, iterations=100)
         model.fit(self.X_train, self.y_train)
         
@@ -40,7 +40,7 @@ class TestLogisticRegressor(unittest.TestCase):
         self.assertFalse(np.all((model.w == 0)), "Weights should be updated and not remain zero.")
 
     def test_prediction(self):
-        """Test if the model can predict and output correct shape."""
+        # test if the model can predict and output correct shape
         model = LogisticRegressor(learning_rate=0.05, iterations=1000)
         model.fit(self.X_train, self.y_train)
         y_pred = model.predict(self.X_test)
@@ -65,7 +65,7 @@ class TestLogisticRegressor(unittest.TestCase):
         self.assertAlmostEqual(accuracy, accuracy_sk, delta=0.1, msg="Custom model accuracy should be close to sklearn model accuracy.")
         
     def test_edge_cases(self):
-        # test edge cases i.e.  when no data is provided or when all labels are the same
+        # test edge cases i.e. when no data is provided or when all labels are the same
         model = LogisticRegressor(learning_rate=0.05, iterations=1000)
         
         # empty dataset
