@@ -1,4 +1,4 @@
-Dwa projekty:
+Wszystkie projekty:
 -logistc regression
 -neural network
 
